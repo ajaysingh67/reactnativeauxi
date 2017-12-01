@@ -1,0 +1,38 @@
+import React, { Component } from 'react'
+import { ToolbarAndroid,StyleSheet,View,Text,TouchableHighlight,Image} from 'react-native'
+import { Actions } from 'react-native-router-flux';
+
+export default class Toolbar extends Component {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+        title: this.props.title,
+    };
+  }
+  render(){
+    return(
+	
+      <ToolbarAndroid
+		  logo={require('../../img/logo.png')}
+		  style = {styles.toolbar}
+		  title="AwesomeApp"
+		  navIcon={require('../../img/drawer.png')}
+		  onIconClicked = {this.props.reference}
+		  titleColor = {"#004A7C"}
+      >
+	    <TouchableHighlight onPress={() => Actions.qrcodecamara()} underlayColor={'#23527c'} style={{borderColor:'red',borderWidth:1,width:125}}  >
+			 <Text style={{borderColor:'#fff',borderWidth:1,height: 50,textAlign:'right',width:125,paddingVertical:5}} ><Image source={require('../../img/drawer.png')} style={{width:130,height:130}}  /></Text>
+	    </TouchableHighlight>
+	    </ToolbarAndroid>
+    );
+  }
+}
+
+var styles = StyleSheet.create({
+  toolbar: {
+   backgroundColor: '#004a7c',
+   height: 56,
+   flex:0,
+  },
+ });
